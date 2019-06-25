@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title>Leap Year</title>
+	<style type="text/css">
+		* { margin: 0 auto; width: 960px; background-color: blue; }
+		#text_where {
+			color: white;
+			font-weight: bold;
+			text-align: center;
+			font-size: 40px;
+			margin-top: 25px;
+		}
+		#time_output {
+			color: white;
+			font-weight: bold;
+			font-size: 30px;
+			text-align: center;
+			margin-top: 15px;
+		}
+		#get_year {
+			text-align: center;
+			font-size: 40px;
+			font-weight: bold;
+			color: white;
+		}
+		#year {
+			font-size: 38px;
+			color: white;
+			width: 105px;
+			text-align: center;
+			margin-top: 25px;
+			border: 2px solid white;
+		}
+		#submit {
+			width: 250px;
+			color: white;
+			font-size: 38px;
+			text-align: center;
+			border: 2px solid white;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		var $ = function(id) { return document.getElementById(id); }
+
+		function leap_year() {
+			var year = $("year");
+			var ans;
+			var leap = year.value % 4 == 0 && year % 100 != 0 || year % 400 == 0
+			if (leap == true)
+				ans = year.value + " সালটি লীপ ইয়ার!";
+			else
+				ans ="দুঃখিত "+ year.value + " সালটি লীপ ইয়ার নয়!";
+			$("text_where").innerHTML = ans;
+		}
+
+		function timeInterval() {
+			setInterval("displayTime()", 1000);
+		}
+
+		function displayTime() {
+			var time = new Date();
+			var tm = time.toLocaleTimeString();
+			var str = "বর্তমান সময়: " + tm;
+			$("time_output").innerHTML = str;
+		}
+
+        function goTo(){
+            return window.location.replace("index.html");
+        }
+	</script>
+</head>
+<body onload="javascript:timeInterval();">
+
+    <div>
+        <div>
+            <h1 style="color:white;font-size:30px;padding-top:20px">আমাদের ফুলহাতা মাধ্যমিক বিদ্যালয়ের ক্ষুদে প্রোগ্রামাররা একটা লীপ ইয়ার বের করার প্রোগ্রাম তৈরি করেছে। আপনি চাইলে এখানে যে কোন সাল দিয়ে দেখে নিতে পারেন যে সালটি লীপ ইয়ার কিনা?</h1>
+        </div>
+    </div>
+
+	<div id="time_output"></div>
+		<div id="get_year">
+			আপনি কোন বছরটি দিয়ে লীপ ইয়ার পরীক্ষা করতে চান (সালটি ইংরেজীতে দিতে হবে)? <br />
+			<input type="text" id="year" name="year" />
+			<input type="button" id="submit" value="চেক করুন" onclick="leap_year();" />
+		</div>
+        <div id="text_where"></div>
+        
+
+    <input style="color:white" type="button" id="" value="অন্য পাতায় চলে আসুন" onclick="goTo()">
+</body>
+</html>
